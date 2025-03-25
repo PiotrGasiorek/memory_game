@@ -1,0 +1,18 @@
+.radioInputCard {
+    padding: spacing.$space-md;
+    border: 1px solid palette.$grey-400;
+    border-radius: surface.$border-radius-large;
+    min-width: 240px;
+    gap: spacing.$space-md;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color .3s, background-color .3s;
+
+    &:has(.radioInputCard__input:checked) {
+        border-color: palette.$primary-400;
+        background-color: color-mix(in srgb, palette.$primary-600 20%, transparent);
+    }
+}

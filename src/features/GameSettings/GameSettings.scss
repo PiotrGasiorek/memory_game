@@ -1,0 +1,14 @@
+.gameSettings {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gameSettings__inputs {
+    display: flex;
+    gap: spacing.$space-md;
+    flex-wrap: wrap;
+    padding: spacing.$space-md;
+    border: 0;
+    justify-content: center;
+}

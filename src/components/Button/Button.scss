@@ -1,0 +1,154 @@
+// Typography variables
+$font-weight-medium: 600;
+$font-letterspacing-default: 0.02em;
+
+// Font size map
+$text-sizes: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  md: 1rem
+);
+
+// Mixin to handle text sizes
+@mixin text-size($size) {
+  font-size: map.get($text-sizes, $size);
+}
+
+// Button sizes configuration
+$button-sizes: (
+  'sm': (
+    padding: 4px 8px,
+    line-height: 14px,
+    border-radius: 4px,
+    gap: 4px,
+    icon-size: 24px,
+    font-size: xs,
+    font-weight: $font-weight-medium,
+    letter-spacing: $font-letterspacing-default
+  ),
+  'md': (
+    padding: 8px 12px,
+    line-height: 24px,
+    border-radius: 8px,
+    gap: 8px,
+    icon-size: 40px,
+    font-size: sm,
+    font-weight: $font-weight-medium,
+    letter-spacing: $font-letterspacing-default
+  ),
+  'lg': (
+    padding: 16px 24px,
+    line-height: 24px,
+    border-radius: 8px,
+    gap: 8px,
+    icon-size: 48px,
+    font-size: md,
+    font-weight: $font-weight-medium,
+    letter-spacing: $font-letterspacing-default
+  )
+);
+
+// Button colors configuration
+$button-colors: (
+  'primary': (
+    main: palette.$primary-main,
+    hover: palette.$primary-400,
+    text: palette.$color-white,
+    outlined-hover: color-mix(in srgb, palette.$primary-main 10%, transparent),
+    text-hover: color-mix(in srgb, palette.$primary-main 8%, transparent)
+  ),
+  'secondary': (
+    main: palette.$secondary-main,
+    hover: palette.$secondary-300,
+    text: palette.$color-white,
+    outlined-hover: color-mix(in srgb, palette.$secondary-main 10%, transparent),
+    text-hover: color-mix(in srgb, palette.$secondary-main 8%, transparent)
+  ),
+  'ghost': (
+    main: transparent,
+    hover: color-mix(in srgb, palette.$grey-200 10%, transparent),
+    text: palette.$color-white,
+    outlined-hover: color-mix(in srgb, palette.$grey-200 10%, transparent),
+    text-hover: color-mix(in srgb, palette.$grey-200 8%, transparent)
+  )
+);
+
+// Base button mixin
+@mixin button-base {
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+// Button variant mixin
+@mixin button-variant($color-map) {
+  $main-color: map.get($color-map, 'main');
+  $hover-color: map.get($color-map, 'hover');
+  $text-color: map.get($color-map, 'text');
+
+  &.button--contained {
+    background-color: $main-color;
+    color: $text-color;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+
+  &.button--outlined {
+    background: transparent;
+    border: 1px solid $main-color;
+    color: $text-color;
+
+    &:hover {
+      background-color: map.get($color-map, 'outlined-hover');
+    }
+  }
+
+  &.button--text {
+    background: transparent;
+    color: $text-color;
+
+    &:hover {
+      background-color: map.get($color-map, 'text-hover');
+    }
+  }
+}
+
+// Button class styles
+.button {
+  @include button-base;
+
+  @each $size, $props in $button-sizes {
+    &--#{$size} {
+      padding: map.get($props, 'padding');
+      line-height: map.get($props, 'line-height');
+      border-radius: map.get($props, 'border-radius');
+      gap: map.get($props, 'gap');
+      @include text-size(#{map.get($props, font-size)});
+      font-weight: map.get($props, 'font-weight');
+      letter-spacing: map.get($props, 'letter-spacing');
+
+      &.button--icon-only {
+        min-width: map.get($props, 'icon-size');
+        max-width: map.get($props, 'icon-size');
+        min-height: map.get($props, 'icon-size');
+        max-height: map.get($props, 'icon-size');
+        padding: 0;
+      }
+    }
+  }
+
+  @each $color, $color-map in $button-colors {
+    &--#{$color} {
+      @include button-variant($color-map);
+    }
+  }
+}
