@@ -1,0 +1,100 @@
+@import './Font-tokens.scss';
+@import './Font-size.scss';
+
+// Base Body Styles
+body {
+    font-family: map.get($typeface, 'default');
+    font-size: var(--font-size-sm);
+    line-height: map.get($lineheight, '300');
+    letter-spacing: map.get($letterspacing, 'default');
+}
+
+// Heading Styles Mixin
+@mixin heading-base {
+    font-weight: map.get($weight, 'bold');
+    font-family: map.get($typeface, 'default');
+    letter-spacing: map.get($letterspacing, 'compress');
+}
+
+// Heading Classes
+@each $level, $size in (
+    h1: '4xl',
+    h2: '3xl', 
+    h3: '2xl', 
+    h4: 'xl', 
+    h5: 'lg', 
+    h6: 'md'
+) {
+    [class*=#{$level}] {
+        @if $level == h1 {
+            font-size: var(--font-size-#{$size});
+            font-weight: map.get($weight, 'bold');
+            font-family: map.get($typeface, 'titles');
+            letter-spacing: map.get($letterspacing, 'default');
+        } @else {
+            @include heading-base;
+            font-size: var(--font-size-#{$size});
+        }
+
+        &.#{$level}--regular {
+            font-weight: map.get($weight, 'regular');
+        }
+    }
+}
+
+// Body Text Mixin
+@mixin body-text-base(
+    $size, 
+    $weight: map.get($weight, 'regular'), 
+    $line-height: map.get($lineheight, '300')
+) {
+    font-size: var(--font-size-#{$size});
+    font-weight: $weight;
+    font-family: map.get($typeface, 'default');
+    line-height: $line-height;
+    letter-spacing: map.get($letterspacing, 'default');
+}
+
+// Body Text Classes
+.body--lg { @include body-text-base('lg'); }
+.body--lg--bold { @include body-text-base('lg', map.get($weight, 'bold')); }
+.body--md { @include body-text-base('md'); }
+.body--md--bold { @include body-text-base('md', map.get($weight, 'bold')); }
+.body--sm { @include body-text-base('sm', map.get($weight, 'regular'), map.get($lineheight, '200')); }
+.body--sm--bold { @include body-text-base('sm', map.get($weight, 'bold'), map.get($lineheight, '200')); }
+
+// Tag Styles
+.tag--lg {
+    font-size: var(--font-size-sm);
+    font-weight: map.get($weight, 'medium');
+    font-family: map.get($typeface, 'default');
+    line-height: map.get($lineheight, '100');
+    letter-spacing: map.get($letterspacing, 'default');
+}
+
+.tag--default {
+    font-size: var(--font-size-xs);
+    font-weight: map.get($weight, 'regular');
+    font-family: map.get($typeface, 'default');
+    line-height: map.get($lineheight, '100');
+    letter-spacing: map.get($letterspacing, 'default');
+}
+
+// Mono Text Styles Mixin
+@mixin mono-text-base(
+    $size, 
+    $line-height, 
+    $letter-spacing: map.get($letterspacing, 'default')
+) {
+    font-size: var(--font-size-#{$size});
+    font-weight: map.get($weight, 'medium');
+    font-family: map.get($typeface, 'mono');
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+}
+
+// Mono Text Classes
+.mono--2xl { @include mono-text-base('2xl', map.get($lineheight, '600')); }
+.mono--xl { @include mono-text-base('xl', map.get($lineheight, '500')); }
+.mono--sm { @include mono-text-base('sm', map.get($lineheight, '500')); }
+.mono--xs { @include mono-text-base('xs', map.get($lineheight, '100')); }

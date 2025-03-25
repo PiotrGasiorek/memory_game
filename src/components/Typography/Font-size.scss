@@ -1,0 +1,60 @@
+@use "sass:map";
+
+// Typography Configuration
+$font-sizes: (
+  xs: (min: 1rem, clamp-start: calc(1.1rem - 0.2vi), clamp-end: 1rem),
+  sm: (min: 1.1rem, clamp-start: 1.1rem, clamp-end: 1.1rem),
+  base: (min: 1.3rem, clamp-start: calc(1.2rem + 0.3vi), clamp-end: 1.4rem),
+  md: (min: 1.4rem, clamp-start: calc(1.2rem + 0.5vi), clamp-end: 1.6rem),
+  lg: (min: 1.5rem, clamp-start: calc(1.2rem + 0.9vi), clamp-end: 2rem),
+  xl: (min: 1.7rem, clamp-start: calc(1.2rem + 1.4vi), clamp-end: 2.4rem),
+  '2xl': (min: 1.8rem, clamp-start: calc(1.2rem + 2vi), clamp-end: 2.9rem),
+  '3xl': (min: 2rem, clamp-start: calc(1.2rem + 2.8vi), clamp-end: 3.4rem),
+  '4xl': (min: 2.2rem, clamp-start: calc(1.1rem + 3.8vi), clamp-end: 4.1rem)
+) !default;
+
+// Fluid Typography Mixin
+@mixin fluid-typography(
+  $sizes: $font-sizes,
+  $root: ':root'
+) {
+  // Clamp support
+  @supports (font-size: clamp(1rem, 1vi, 1rem)) {
+    #{$root} {
+      @each $size, $values in $sizes {
+        --font-size-#{$size}: clamp(
+          #{map.get($values, min)}, 
+          #{map.get($values, clamp-start)}, 
+          #{map.get($values, clamp-end)}
+        );
+      }
+    }
+  }
+
+  // No clamp support
+  @supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+    #{$root} {
+      // Base sizes
+      @each $size, $values in $sizes {
+        --font-size-#{$size}: #{map.get($values, min)};
+      }
+
+      // Larger sizes for wider screens
+      @media screen and (min-width: 1280px) {
+        @each $size, $values in $sizes {
+          --font-size-#{$size}: #{map.get($values, clamp-end)};
+        }
+      }
+    }
+  }
+}
+
+
+// Global Typography Application
+@include fluid-typography();
+
+// Typography Reset and Base Styles
+body {
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}

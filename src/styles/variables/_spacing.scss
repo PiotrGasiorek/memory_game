@@ -1,0 +1,11 @@
+$space-3xs: clamp(0.25rem, 0.25rem + 0vw, 0.25rem);
+$space-2xs: clamp(0.5625rem, 0.5408rem + 0.1087vw, 0.625rem);
+$space-xs: clamp(0.875rem, 0.8533rem + 0.1087vw, 0.9375rem);
+$space-sm: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+$space-md: clamp(1.6875rem, 1.6223rem + 0.3261vw, 1.875rem);
+$space-lg: clamp(2.25rem, 2.163rem + 0.4348vw, 2.5rem);
+$space-xl: clamp(3.375rem, 3.2446rem + 0.6522vw, 3.75rem);
+$space-2xl: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
+$space-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
+$space-4xl: clamp(9rem, 8.6522rem + 1.7391vw, 10rem);
+$space-5xl: clamp(13.5rem, 12.9783rem + 2.6087vw, 15rem);

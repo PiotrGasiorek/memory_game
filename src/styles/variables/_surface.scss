@@ -1,0 +1,22 @@
+// Border Radius Variables
+$border-radius-small: 4px;
+$border-radius-medium: 8px;
+$border-radius-large: 16px;
+$border-radius-xlarge: 32px;
+
+// Border Width Variables
+$border-width-small: 1px;
+$border-width-medium: 2px;
+$border-width-large: 3px;
+
+// Drop Shadow Variables
+$drop-shadow-small: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+$drop-shadow-medium: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+$drop-shadow-large: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+$drop-shadow-status-error: 0 0 0 2px rgba(202, 27, 87, 0.2);
+$drop-shadow-status-active: 0 0 0 2px rgba(49, 36, 159, 0.25);
+
+// Inner Shadow Variables
+$inner-shadow-small: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+$inner-shadow-medium: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+$inner-shadow-large: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
