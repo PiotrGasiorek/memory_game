@@ -4,8 +4,8 @@
     padding: 0 spacing.$space-2xs;
     background: linear-gradient(
         90deg, 
-        #0A0A0A, /* Deep charcoal */
-        #1C1C1C   /* Slightly lighter charcoal */
+        #0A0A0A,
+        #1C1C1C
       );
 }
 
@@ -20,5 +20,7 @@
 }
 
 .main {
+    width: 100%;
+    padding: spacing.$space-md 0;
     flex-grow: 1;
 }
