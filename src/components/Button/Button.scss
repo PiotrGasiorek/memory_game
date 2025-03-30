@@ -104,7 +104,7 @@ $button-colors: (
 
   &.button--outlined {
     background: transparent;
-    border: 1px solid $main-color;
+    border: 1px solid $text-color;
     color: $text-color;
 
     &:hover {
