@@ -9,7 +9,7 @@ export const Navbar = () => {
       <Link className="nav__logo" to={"/"}>
         <img className="nav__logo__img" src={Logo} alt="Go to homepage" />
       </Link>
-      <Button variant="outlined" size="md" color="ghost" to="/dashboard">
+      <Button variant="text" size="md" color="ghost" to="/dashboard">
         Games Statistics
       </Button>
     </nav>
