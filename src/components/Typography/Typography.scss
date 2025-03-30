@@ -1,5 +1,5 @@
-@import './Font-tokens.scss';
-@import './Font-size.scss';
+@use './Font-tokens.scss';
+@use './Font-size.scss';
 
 // Base Body Styles
 body {
@@ -96,5 +96,6 @@ body {
 // Mono Text Classes
 .mono--2xl { @include mono-text-base('2xl', map.get($lineheight, '600')); }
 .mono--xl { @include mono-text-base('xl', map.get($lineheight, '500')); }
+.mono--md { @include mono-text-base('md', map.get($lineheight, '500')); }
 .mono--sm { @include mono-text-base('sm', map.get($lineheight, '500')); }
 .mono--xs { @include mono-text-base('xs', map.get($lineheight, '100')); }

@@ -12,7 +12,8 @@ type Components =
   | "span"
   | "b"
   | "strong"
-  | "label";
+  | "label"
+  | "li";
 
 type Variants =
   | "h1"
@@ -24,7 +25,12 @@ type Variants =
   | "h5--regular"
   | "h6"
   | "body--md"
-  | "body--sm";
+  | "body--sm"
+  | "mono--2xl"
+  | "mono--xl"
+  | "mono--md"
+  | "mono--sm"
+  | "mono--xs";
 
 interface TypographyProps {
   component: Components;
