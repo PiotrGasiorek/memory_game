@@ -1,0 +1,48 @@
+.gamesTable {
+    &__table {
+        &__header {
+            position: sticky;
+            top: 0;
+
+            &__row {
+                &__cell {
+                    color: palette.$grey-100;
+                }
+            }
+        }
+
+        &__body {
+            color: palette.$grey-200;
+
+            &__row {
+                position: relative;
+
+                &:not(:last-of-type)::after {
+                    width: 100%;
+                    height: 1px;
+                    background-color: palette.$grey-500;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    content: '';
+                }
+
+                &__cell {
+                    padding-top: spacing.$space-sm;
+                    padding-bottom: spacing.$space-sm;
+                }
+            }
+        }
+
+        &__body__row__cell,
+        &__header__row__cell {
+            padding-left: spacing.$space-lg;
+            text-align: left;
+            font-variant-numeric: tabular-nums;
+
+            &:first-of-type {
+                padding-left: 0;
+            }
+        }
+    }
+}
