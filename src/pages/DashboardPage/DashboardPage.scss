@@ -1,0 +1,24 @@
+.dashboardPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: spacing.$space-md;
+
+    &__title {
+        color: palette.$color-white;
+    }
+
+    &__tableWrapper {
+        width: fit-content;
+        max-width: 100%;
+        background-color: palette.$table-bg;
+        max-height: 70dvh;
+        overflow: scroll;
+        border-radius: surface.$border-radius-medium;
+        padding: spacing.$space-sm spacing.$space-md;
+    }
+
+    &__fallback {
+        color: palette.$grey-200;
+    }
+}
