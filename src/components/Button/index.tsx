@@ -1,17 +1,20 @@
 import React, { ReactNode } from "react";
 import "./Button.scss";
-import { Link, LinkProps } from "react-router-dom";
+import { Link, LinkProps as ReactRouterLinkProps, To } from "react-router-dom";
 
-interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    Omit<LinkProps, keyof React.ButtonHTMLAttributes<HTMLButtonElement>> {
+type ButtonBaseProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   size: "sm" | "md" | "lg";
   color: "primary" | "ghost";
   variant: "contained" | "outlined" | "text";
   children: ReactNode;
-  to?: string;
   className?: string;
-}
+};
+
+type LinkProps = Omit<ReactRouterLinkProps, keyof ButtonBaseProps> & {
+  to: To;
+};
+
+type ButtonProps = ButtonBaseProps & Partial<LinkProps>;
 
 export const Button: React.FC<ButtonProps> = ({
   size,
