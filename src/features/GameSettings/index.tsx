@@ -11,7 +11,6 @@ export const GameSettings = () => {
 
   const handleStartGame = () => {
     navigate("/game");
-    alert("Game Started");
   };
 
   return (
